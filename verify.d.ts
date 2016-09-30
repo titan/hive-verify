@@ -1,0 +1,1 @@
+export declare function verify(args: any[], cb: (errs: string[]) => string): boolean 

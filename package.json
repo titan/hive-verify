@@ -1,0 +1,13 @@
+{
+    "name": "hive-verify",
+    "version": "1.0.0",
+    "description": "",
+    "main": "verify.js",
+    "scripts": {},
+    "keywords": [],
+    "author": "luofei",
+    "license": "ISC",
+    "dependencies": {
+        "msgpack-lite": "^0.1.20"
+    }
+}
