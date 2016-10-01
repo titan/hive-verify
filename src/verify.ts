@@ -34,10 +34,10 @@ export function numberVerifier(name: string, value: number): (() => boolean | st
 export function booleanVerifier(name: string, value: boolean): (() => boolean | string) {
     return () => isNull && typeof (value) === 'boolean' ? true : name;
 }
-export function arrayVerifier(name: string, value: any[]): (() => Boolean | string) {
+export function arrayVerifier(name: string, value: any[]): (() => boolean | string) {
     return () => isNull && value.constructor === Array ? true : name;
 }
-export function uuidVerifier(name: string, value: string): (() => Boolean | string) {
+export function uuidVerifier(name: string, value: string): (() => boolean | string) {
     return () => isNull && value.length === 36 ? true : name;
 }
 
