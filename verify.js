@@ -44,3 +44,7 @@ function arrayVerifier(name, value) {
     return () => isNull && value.constructor === Array ? true : name;
 }
 exports.arrayVerifier = arrayVerifier;
+function uuidVerifier(name, value) {
+    return () => isNull && value.length === 36 ? true : name;
+}
+exports.uuidVerifier = uuidVerifier;

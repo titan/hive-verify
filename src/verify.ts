@@ -7,7 +7,7 @@ function isNull(value: any) {
         return true;
     }
 }
-export function verify(args: any[], cb: (errs: string[]) => string): boolean {
+export function verify(args: any[], cb: (errs: string[]) => ''): boolean {
     let errors = [];
     for (let v of args) {
         let result = v();
@@ -37,4 +37,10 @@ export function booleanVerifier(name: string, value: boolean): (() => boolean | 
 export function arrayVerifier(name: string, value: any[]): (() => Boolean | string) {
     return () => isNull && value.constructor === Array ? true : name;
 }
+export function uuidVerifier(name: string, value: string): (() => Boolean | string) {
+    return () => isNull && value.length === 36 ? true : name;
+}
+
+
+
 
