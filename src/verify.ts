@@ -7,7 +7,7 @@ function isNull(value: any) {
         return true;
     }
 }
-export function verify(args: any[], cb: (errs: string[]) => ''): boolean {
+export function verify(args: any[], cb: (errs: string[]) => void): boolean {
     let errors = [];
     for (let v of args) {
         let result = v();
