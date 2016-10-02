@@ -29,22 +29,22 @@ function objectVerifier(name, value) {
 }
 exports.objectVerifier = objectVerifier;
 function stringVerifier(name, value) {
-    return () => isNull && typeof (value) === 'string' ? true : name;
+    return () => isNull(value) && typeof (value) === 'string' ? true : name;
 }
 exports.stringVerifier = stringVerifier;
 function numberVerifier(name, value) {
-    return () => isNull && typeof (value) === 'number' ? true : name;
+    return () => isNull(value) && typeof (value) === 'number' ? true : name;
 }
 exports.numberVerifier = numberVerifier;
 function booleanVerifier(name, value) {
-    return () => isNull && typeof (value) === 'boolean' ? true : name;
+    return () => isNull(value) && typeof (value) === 'boolean' ? true : name;
 }
 exports.booleanVerifier = booleanVerifier;
 function arrayVerifier(name, value) {
-    return () => isNull && value.constructor === Array ? true : name;
+    return () => isNull(value) && value.constructor === Array ? true : name;
 }
 exports.arrayVerifier = arrayVerifier;
 function uuidVerifier(name, value) {
-    return () => isNull && value.length === 36 ? true : name;
+    return () => isNull(value) && value.length === 36 ? true : name;
 }
 exports.uuidVerifier = uuidVerifier;
