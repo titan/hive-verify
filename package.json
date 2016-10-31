@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "",
     "main": "verify.js",
+    "types": "verify.d.ts",
     "scripts": {},
     "keywords": [],
     "author": "luofei",
