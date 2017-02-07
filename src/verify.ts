@@ -7,7 +7,7 @@ function isNull(value: any) {
         return true;
     }
 }
-export function verify(args: any[], cb: (errs: string[]) => void): boolean {
+export async function verify(args: any[], cb?: (errs: string[]) => void): Promise<boolean> {
     let errors = [];
     for (let v of args) {
         let result = v();
@@ -16,8 +16,12 @@ export function verify(args: any[], cb: (errs: string[]) => void): boolean {
         }
     }
     if (errors.length > 0) {
-        cb(errors);
-        return false;
+        if (cb) {
+            cb(errors);
+            return false
+        } else {
+            throw errors;
+        }
     } else {
         return true;
     }
@@ -40,7 +44,9 @@ export function arrayVerifier(name: string, value: any[]): (() => boolean | stri
 export function uuidVerifier(name: string, value: string): (() => boolean | string) {
     return () => isNull(value) && value.length === 36 ? true : name;
 }
-
+export function strictStringVerifier(name: string, value: string): (() => boolean | string) {
+    return () => isNull(value) && typeof (value) === 'string' && value.length > 0 ? true : name;
+}
 
 
 

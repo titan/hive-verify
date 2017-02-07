@@ -1,4 +1,12 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments)).next());
+    });
+};
 function isNull(value) {
     if (value === null) {
         return false;
@@ -8,20 +16,27 @@ function isNull(value) {
     }
 }
 function verify(args, cb) {
-    let errors = [];
-    for (let v of args) {
-        let result = v();
-        if (typeof result === "string") {
-            errors.push(result);
+    return __awaiter(this, void 0, void 0, function* () {
+        let errors = [];
+        for (let v of args) {
+            let result = v();
+            if (typeof result === "string") {
+                errors.push(result);
+            }
         }
-    }
-    if (errors.length > 0) {
-        cb(errors);
-        return false;
-    }
-    else {
-        return true;
-    }
+        if (errors.length > 0) {
+            if (cb) {
+                cb(errors);
+                return false;
+            }
+            else {
+                throw errors;
+            }
+        }
+        else {
+            return true;
+        }
+    });
 }
 exports.verify = verify;
 function objectVerifier(name, value) {
@@ -48,3 +63,7 @@ function uuidVerifier(name, value) {
     return () => isNull(value) && value.length === 36 ? true : name;
 }
 exports.uuidVerifier = uuidVerifier;
+function strictStringVerifier(name, value) {
+    return () => isNull(value) && typeof (value) === 'string' && value.length > 0 ? true : name;
+}
+exports.strictStringVerifier = strictStringVerifier;
