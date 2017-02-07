@@ -67,3 +67,7 @@ function strictStringVerifier(name, value) {
     return () => isNull(value) && typeof (value) === 'string' && value.length > 0 ? true : name;
 }
 exports.strictStringVerifier = strictStringVerifier;
+function dateVerifier(name, value) {
+    return () => isNull(value) && typeof (value) === 'object' ? true : name;
+}
+exports.dateVerifier = dateVerifier;

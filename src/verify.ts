@@ -47,6 +47,8 @@ export function uuidVerifier(name: string, value: string): (() => boolean | stri
 export function strictStringVerifier(name: string, value: string): (() => boolean | string) {
     return () => isNull(value) && typeof (value) === 'string' && value.length > 0 ? true : name;
 }
-
+export function dateVerifier(name: string, value: string): (() => boolean | string) {
+    return () => isNull(value) && typeof (value) === 'object' ? true : name;
+}
 
 

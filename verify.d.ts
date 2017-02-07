@@ -6,3 +6,4 @@ export declare function booleanVerifier(name: string, value: boolean): (() => bo
 export declare function arrayVerifier(name: string, value: any[]): (() => boolean | string);
 export declare function uuidVerifier(name: string, value: string): (() => boolean | string);
 export declare function strictStringVerifier(name: string, value: string): (() => boolean | string);
+export declare function dateVerifier(name: string, value: string): (() => boolean | string);
