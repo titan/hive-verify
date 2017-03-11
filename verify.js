@@ -15,23 +15,18 @@ function isNull(value) {
         return true;
     }
 }
-function verify(args, cb) {
+function verify(args) {
     return __awaiter(this, void 0, void 0, function* () {
-        let errors = [];
-        for (let v of args) {
-            let result = v();
+        const errors = [];
+        for (const v of args) {
+            const result = v();
             if (typeof result === "string") {
                 errors.push(result);
             }
         }
         if (errors.length > 0) {
-            if (cb) {
-                cb(errors);
-                return false;
-            }
-            else {
-                throw errors;
-            }
+            const error = new Error("参数无法通过验证: " + errors.join(", "));
+            throw error;
         }
         else {
             return true;

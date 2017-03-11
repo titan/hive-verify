@@ -7,21 +7,17 @@ function isNull(value: any) {
         return true;
     }
 }
-export async function verify(args: any[], cb?: (errs: string[]) => void): Promise<boolean> {
-    let errors = [];
-    for (let v of args) {
-        let result = v();
+export async function verify(args: any[]): Promise<boolean> {
+    const errors = [];
+    for (const v of args) {
+        const result = v();
         if (typeof result === "string") {
             errors.push(result);
         }
     }
     if (errors.length > 0) {
-        if (cb) {
-            cb(errors);
-            return false
-        } else {
-            throw errors;
-        }
+        const error = new Error("参数无法通过验证: " + errors.join(", "));
+        throw error;
     } else {
         return true;
     }
